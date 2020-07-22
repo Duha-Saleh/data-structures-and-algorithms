@@ -1,7 +1,7 @@
 'use strict';
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 1 - Review
+CHALLENGE 1 - Review do it
 Write a function named raisedToTheThird that takes in an array of numbers and returns a new array of each of those numbers raised to the 3rd power (hint: look up Math.pow()). Use forEach to solve this problem.
 ------------------------------------------------------------------------------------------------ */
 
@@ -12,6 +12,7 @@ const raisedToTheThird = arr =>{
          array.push(Math.pow(element, 3))
     });
     return array;
+
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -19,9 +20,11 @@ CHALLENGE 2
 Write a function that appends ' The end.' to a string, and returns the modified string. The original source string should not be modified.
 ------------------------------------------------------------------------------------------------ */
 
-const appendTheEnd = str =>{
+const appendTheEnd = str => {
   // Solution code here...
+
   let modifyStr = `${str} The end.`;
+
     return modifyStr;
 };
 
