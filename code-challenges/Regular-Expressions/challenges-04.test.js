@@ -22,7 +22,8 @@ let $ = createSnippetWithJQuery(`
 
 const generateSubmitButton = () => {
   // Solution code here...
-  $('form').append('<button tybe="submit">submit</button>');
+var button =$('<button></button').text('submit');
+$('form').append(button);
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -49,8 +50,13 @@ Return an array containing all the matches.
 
 const isCapitalized = (str) => {
   // Solution code here...
-  let word = /\b[A-Z]/g;
-  return str.match(word);
+let res=str.match(/[A-Z][A-Z] +g);
+if (res==null){
+return [];}
+else {
+  return res
+}
+
 };
 
 /* ------------------------------------------------------------------------------------------------
