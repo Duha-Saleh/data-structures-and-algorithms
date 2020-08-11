@@ -17,7 +17,7 @@ let $ = createSnippetWithJQuery(`
 
 const changeAllClassNames = () => {
   // Solution code here...
-  $('#fruits').children().addClass('fruit');
+$('li').addClass('fruit');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -27,8 +27,6 @@ Write a function named sortBackwards that takes in an array of numbers and retur
 
 const sortBackwards = (arr) => {
   // Solution code here...
-  arr.sort((a, b) =>{ b-a;
-  })
   return arr;
 };
 
@@ -41,13 +39,9 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 
 const alphabetize = (arr) => {
   // Solution code here...
-  arr.sort((a, b) =>{
-    if(a > b) return 1;
-    if(a == b) return 0;
-    if(a < b) return -1;
-  })
-  return arr;
-};
+
+  return arr.sort();
+};  
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
