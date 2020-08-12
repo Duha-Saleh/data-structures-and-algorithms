@@ -20,7 +20,7 @@ const $ = createSnippetWithJQuery(`
 
 const fixTheTypo = () => {
 // Solution code here...
-$('.pear').text('Pear');
+  $('.pear').text('Pear');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -30,11 +30,8 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 ------------------------------------------------------------------------------------------------ */
 
 const firstLetters = (arr) => {
-   let result = arr.map(item =>{
-       return item[0];
-   })
-   return result;
   // Solution code here...
+  return arr.map(s => s.charAt(0));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -44,16 +41,9 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 ------------------------------------------------------------------------------------------------ */
 
 const findHappiness = (arr) => {
-    // Solution code here...
-    let result = [];
-    arr.forEach(item=>{
-      if(item.includes(':)')){
-        // console.log(item);
-        result.push(item)
-      }
-    });
-    return result;
-  };
+  // Solution code here...
+  return arr.filter(s => s.includes(':)'));
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -63,22 +53,7 @@ For example, (123) 456-7890 returns 1234567890
 
 const standardizePhoneNumbers = (arr) => {
   // Solution code here...
-  let myarr = []
-let result=arr.reduce((acc,value,idx)=>{
-  acc = ''
-  let patt = /([0-9])/g
-  for(let i = 0; i < value.length;i++){
-    if (patt.test(value[i])){
-    //   console.log(value[i])
-      acc+=value[i];
-      i = i-1;
-    }
-  }
-  myarr.push(acc)
-    return acc;
-
-},'')
-return myarr;
+  return arr.map(s => s.split('').filter(c => /\d/.test(c)).join(''));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -88,23 +63,13 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
-
-    let arr = Array.from(str);
-    let result = '';
-      if(arr.length>0){
-  
-    for(let i = 1; i < arr.length;i++){
-  result += arr[i]
-  i++;
-    }
-    return result
-      }else{
-        
-        return '';}
-  };
+  // Solution code here...
+  return str.split('').filter((c, i) => i % 2 === 1).join('');
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 - Stretch Goal
+
 Write a function named allHappy that takes in an array of strings and returns a Boolean indicating whether all those strings contain ":)".
 ------------------------------------------------------------------------------------------------ */
 
@@ -114,6 +79,7 @@ const allHappy = (arr) => {
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
+
 Write a function named findAnything that takes in an array of strings, along with a target string. Return an array containing only those strings from the original array that contain the target string.
 ------------------------------------------------------------------------------------------------ */
 
@@ -123,6 +89,7 @@ const findAnything = (arr, target) => {
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
+
 Write a function named findEvery that takes in an array of strings, along with a target string. Return a Boolean based on whether or not every string in the array contains the target string.
 ------------------------------------------------------------------------------------------------ */
 
@@ -132,9 +99,13 @@ const findEvery = (arr, target) => {
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
+
 We've been testing a new course enrollment system, and we think we have the bugs worked out, but in the meantime, Brook enrolled himself in a bunch of different classes to test if it was working.
+
 Write a function named unenrollBrook that takes in a two-dimensional array, where each array represents one course's roster and is an array of strings of the names of the people in that course.
+
 Return a two-dimensional array with the same roster, but where anyone whose name includes Brook is removed from every course.
+
 For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again', 'still Brook']] returns [['Actual Person'], ['Human Person']]
 ------------------------------------------------------------------------------------------------ */
 
@@ -144,9 +115,13 @@ const unenrollBrook = (arr) => {
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
+
 Write a function named sortByDay that takes in an array of strings, each of which represents an event's day and time.
+
 Return a two-dimensional array that organizes those strings based on the day on which they occur. For example, all events on Monday are in the first array, all events on Tuesday are in the second array, etc.
+
 If an event takes place on multiple days (i.e. "Dancing on Mondays and Tuesdays"), it should appear in both arrays.
+
 For example, ['Tuesday', 'Monday', 'Wednesday and Thursday', 'Tuesday 2', 'Thursday'] returns
 [
   ['Monday'],
@@ -167,7 +142,9 @@ const sortByDay = (arr) => {
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 11 - Stretch Goal
+
 Write a function named characterByIndex that takes in an array of strings and returns an array containing the first character of the first string, the second character of the second string, etc.
+
 For example, ['abcd', 'efgh', 'ijkl', 'mnop'] returns ['a', 'f', 'k', 'p']
 ------------------------------------------------------------------------------------------------ */
 
@@ -175,13 +152,7 @@ const characterByIndex = (arr) => {
   // Solution code here...
 };
 
-/* ------------------------------------------------------------------------------------------------
-TESTS
-All the code below will verify that your functions are working to solve the challenges.
-DO NOT CHANGE any of the below code.
-Run your tests from the console: jest challenges-13.test.js
------------------------------------------------------------------------------------------------- */
-
+//* ------------------------------------------------------------------------------------------------
 describe('Testing challenge 1', () => {
   test('It should return markup with typo fixed', () => {
     fixTheTypo();
@@ -220,7 +191,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should only return the odd indexed characters from the string', () => {
     expect(onlyOddChars('0123456789')).toStrictEqual('13579');
     expect(onlyOddChars('abcd')).toStrictEqual('bd');
