@@ -19,7 +19,6 @@ const toLastNames = people => {
   return arr;
 };
 
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 Write a function named validatePin that uses a regular expression pattern to validate a PIN.
@@ -83,8 +82,6 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 
 const findTagNames = elements => {
   // Solution code here...
-  return elements.map(str => str.match(/<(\/[a-z]+\d?)>/g))
-    .reduce( (ans, result) => ans.concat(result.map(x => x.slice(1, (x.length-1)))), []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -171,11 +168,26 @@ describe('Testing challenge 4', () => {
   });
 });
 
-describe('Testing challenge 5', () => {
-  test('It should return the closing tags', () => {
-    expect(findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'])).toStrictEqual(['/h1', '/p']);
+xdescribe('Testing challenge 5', () => {
+    test('It should check if url is https', () => {
+  
+      expect(isSecure('http://www.insecure.com')).toBe(false);
+      expect(isSecure('https://secure.com')).toBe(true);
+      expect(isSecure('https:/missingslash.org')).toBe(false);
+    });
   });
-  test('It should work if there are multiple closing tags in a single string', () => {
-    expect(findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])).toStrictEqual(['/h1', '/div', '/p']);
+  
+  xdescribe('Testing challenge 6', () => {
+    test('It should return true if there are three in a row', () => {
+      expect(detectTicTacToeWin([['X', '', 'O'], ['X', 'O', ''], ['X', 'O', 'X']])).toStrictEqual(true);
+      expect(detectTicTacToeWin([['O', '', 'X'], ['X', 'O', 'X'], ['X', '', 'O']])).toStrictEqual(true);
+    });
+  
+    test('It should return false if there are not three in a row', () => {
+      expect(detectTicTacToeWin([['X', '', 'O'], ['O', 'O', ''], ['X', 'O', 'X']])).toStrictEqual(false);
+    });
+  
+    test('It should not treat empty 3 in row as winner', () => {
+      expect(detectTicTacToeWin([['', '', ''], ['O', 'O', ''], ['X', 'O', 'X']])).toEqual(false);
+    });
   });
-});
