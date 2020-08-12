@@ -27,7 +27,6 @@ Write a function named sortBackwards that takes in an array of numbers and retur
 
 const sortBackwards = (arr) => {
   // Solution code here...
-arr.sort((a,b)=> b-a);
   return arr;
 };
 
@@ -51,8 +50,9 @@ Write a function named sortByLength that takes in an array of strings and return
 
 const sortByLength = (arr) => {
   // Solution code here...
-arr.sort((a,b) => a.length - b.length);
-
+  arr.sort((a, b) =>{
+    return a.length - b.length;
+  });
   return arr;
 };
 
@@ -102,9 +102,10 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 const sortNumbersByLength = (arr) => {
   // Solution code here...
   arr.sort((a, b) =>{
-    if(a.toString().length > b.toString().length) return 1;
-    if(a.toString().length == b.toString().length) return 0;
-    if(a.toString().length < b.toString().length) return -1;
+    a.toString()
+  //   if(a.toString().length > b.toString().length) return 1;
+  //   if(a.toString().length == b.toString().length) return 0;
+  //   if(a.toString().length < b.toString().length) return -1;
   })
   return arr;
 };
